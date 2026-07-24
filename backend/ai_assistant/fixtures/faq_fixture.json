@@ -1,0 +1,797 @@
+[
+  {
+    "model": "ai_assistant.faq",
+    "pk": 1,
+    "fields": {
+      "question": "Comment consulter mes certificats ?",
+      "answer": "Bonjour {{name}}, pour consulter vos certificats, rendez-vous dans la section **Mes certificats** depuis le menu principal. Vous y trouverez tous vos certificats de naissance et de décès avec leur statut (en attente, validé, rejeté). Vous pouvez également les télécharger au format PDF.",
+      "role": "citizen",
+      "category": "certificat",
+      "keywords": [
+        "certificat",
+        "consulter",
+        "voir",
+        "mes certificats",
+        "télécharger",
+        "pdf"
+      ],
+      "is_active": true,
+      "priority": 10,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 2,
+    "fields": {
+      "question": "Comment signaler un problème ?",
+      "answer": "Bonjour {{name}}, pour signaler un problème, accédez à la section **Signalement** dans le menu. Décrivez votre problème en détail, sélectionnez la catégorie appropriée (certificat, hôpital, technique) et soumettez votre signalement. Une autorité examinera votre demande dans les plus brefs délais.",
+      "role": "citizen",
+      "category": "signalement",
+      "keywords": [
+        "signaler",
+        "problème",
+        "plainte",
+        "réclamation",
+        "signalement",
+        "aide"
+      ],
+      "is_active": true,
+      "priority": 10,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 3,
+    "fields": {
+      "question": "Comment changer mon mot de passe ?",
+      "answer": "Bonjour {{name}}, pour changer votre mot de passe, allez dans **Paramètres** > **Sécurité** > **Changer le mot de passe**. Vous devrez saisir votre mot de passe actuel, puis votre nouveau mot de passe (minimum 8 caractères avec chiffres et lettres). Confirmez et enregistrez.",
+      "role": "citizen",
+      "category": "parametres",
+      "keywords": [
+        "mot de passe",
+        "changer",
+        "modifier",
+        "password",
+        "sécurité",
+        "paramètres"
+      ],
+      "is_active": true,
+      "priority": 9,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 4,
+    "fields": {
+      "question": "Comment télécharger un certificat ?",
+      "answer": "Bonjour {{name}}, pour télécharger un certificat, allez dans **Mes certificats**, cliquez sur le certificat souhaité, puis sur le bouton **Télécharger le PDF**. Le certificat sera téléchargé sur votre appareil. Assurez-vous que le certificat est au statut **Validé** pour pouvoir le télécharger.",
+      "role": "citizen",
+      "category": "certificat",
+      "keywords": [
+        "télécharger",
+        "certificat",
+        "pdf",
+        "imprimer",
+        "sauvegarder",
+        "exporter"
+      ],
+      "is_active": true,
+      "priority": 9,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 5,
+    "fields": {
+      "question": "Quel est le statut de mon certificat ?",
+      "answer": "Bonjour {{name}}, le statut de vos certificats est visible dans la section **Mes certificats**. Les statuts possibles sont : **En attente** (en cours de traitement), **Validé** (approuvé par l'autorité, téléchargeable), **Rejeté** (refusé, consultez la raison du rejet). Le délai moyen de validation est de 24 à 48 heures.",
+      "role": "citizen",
+      "category": "certificat",
+      "keywords": [
+        "statut",
+        "certificat",
+        "validation",
+        "en attente",
+        "validé",
+        "rejeté",
+        "délai"
+      ],
+      "is_active": true,
+      "priority": 8,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 6,
+    "fields": {
+      "question": "Comment mettre à jour mon profil ?",
+      "answer": "Bonjour {{name}}, pour mettre à jour votre profil, allez dans **Mon profil** depuis le menu. Vous pouvez modifier votre nom, prénom, adresse, téléphone et photo de profil. N'oubliez pas de cliquer sur **Enregistrer** après vos modifications.",
+      "role": "citizen",
+      "category": "profil",
+      "keywords": [
+        "profil",
+        "mettre à jour",
+        "modifier",
+        "informations",
+        "données personnelles",
+        "photo"
+      ],
+      "is_active": true,
+      "priority": 7,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 7,
+    "fields": {
+      "question": "Comment contacter le support ?",
+      "answer": "Bonjour {{name}}, pour contacter le support, vous pouvez : 1) Utiliser la section **Signalement** pour décrire votre problème, 2) Envoyer un email à support@care-link-rdc.cd, 3) Consulter le **Guide d'utilisation** accessible depuis la page d'accueil. Le support répond en général sous 24 heures ouvrées.",
+      "role": "citizen",
+      "category": "aide",
+      "keywords": [
+        "support",
+        "contact",
+        "aide",
+        "assistance",
+        "guide",
+        "email",
+        "contacter"
+      ],
+      "is_active": true,
+      "priority": 7,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 8,
+    "fields": {
+      "question": "Pourquoi mon certificat est rejeté ?",
+      "answer": "Bonjour {{name}}, un certificat peut être rejeté pour plusieurs raisons : informations incorrectes (nom, date, lieu), documents manquants, doublon détecté, ou non-conformité aux normes. Consultez la **raison du rejet** dans les détails du certificat. Vous pouvez alors corriger les informations et soumettre à nouveau.",
+      "role": "citizen",
+      "category": "certificat",
+      "keywords": [
+        "rejeté",
+        "refusé",
+        "erreur",
+        "certificat",
+        "raison",
+        "corriger",
+        "correction"
+      ],
+      "is_active": true,
+      "priority": 8,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 9,
+    "fields": {
+      "question": "Comment enregistrer une naissance ?",
+      "answer": "Bonjour {{name}}, pour enregistrer une naissance, allez dans **Naissances** > **Nouveau**. Remplissez le formulaire avec : nom et prénom du nouveau-né, date et lieu de naissance, nom des parents (mère et père), sexe, et poids. Vérifiez les informations avant de soumettre. Le certificat sera envoyé à l'autorité pour validation.",
+      "role": "hospital",
+      "category": "naissance",
+      "keywords": [
+        "enregistrer",
+        "naissance",
+        "nouveau-né",
+        "bébé",
+        "formulaire",
+        "créer",
+        "ajouter"
+      ],
+      "is_active": true,
+      "priority": 10,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 10,
+    "fields": {
+      "question": "Comment enregistrer un décès ?",
+      "answer": "Bonjour {{name}}, pour enregistrer un décès, allez dans **Décès** > **Nouveau**. Remplissez le formulaire avec : nom complet du défunt, date et lieu du décès, cause du décès, nom du déclarant, et pièces justificatives. Le certificat de décès sera généré et envoyé pour validation.",
+      "role": "hospital",
+      "category": "deces",
+      "keywords": [
+        "enregistrer",
+        "décès",
+        "mort",
+        "défunt",
+        "formulaire",
+        "créer",
+        "certificat de décès"
+      ],
+      "is_active": true,
+      "priority": 10,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 11,
+    "fields": {
+      "question": "Comment générer un certificat ?",
+      "answer": "Bonjour {{name}}, pour générer un certificat, allez dans **Certificats**. Sélectionnez le type (naissance ou décès), choisissez l'enregistrement correspondant, puis cliquez sur **Générer le certificat**. Le système créera automatiquement le certificat au format officiel. Vous pouvez le prévisualiser avant de l'envoyer à l'autorité.",
+      "role": "hospital",
+      "category": "certificat",
+      "keywords": [
+        "générer",
+        "certificat",
+        "créer",
+        "pdf",
+        "naissance",
+        "décès",
+        "officiel"
+      ],
+      "is_active": true,
+      "priority": 9,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 12,
+    "fields": {
+      "question": "Comment envoyer un rapport mensuel ?",
+      "answer": "Bonjour {{name}}, pour envoyer un rapport mensuel, allez dans **Rapports** > **Nouveau rapport**. Le système pré-remplit automatiquement les statistiques du mois (naissances, décès, validations). Vérifiez les données, ajoutez des commentaires si nécessaire, puis cliquez sur **Soumettre**. L'autorité recevra et examinera votre rapport.",
+      "role": "hospital",
+      "category": "rapport",
+      "keywords": [
+        "rapport",
+        "mensuel",
+        "envoyer",
+        "soumettre",
+        "statistiques",
+        "mois",
+        "activité"
+      ],
+      "is_active": true,
+      "priority": 9,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 13,
+    "fields": {
+      "question": "Comment modifier un enregistrement ?",
+      "answer": "Bonjour {{name}}, pour modifier un enregistrement, allez dans **Naissances** ou **Décès**, trouvez l'enregistrement concerné, cliquez sur **Modifier**. Vous pouvez corriger les informations tant que le certificat n'est pas encore validé par l'autorité. Une fois validé, contactez l'autorité pour toute correction.",
+      "role": "hospital",
+      "category": "edition",
+      "keywords": [
+        "modifier",
+        "éditer",
+        "corriger",
+        "enregistrement",
+        "changer",
+        "mise à jour"
+      ],
+      "is_active": true,
+      "priority": 8,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 14,
+    "fields": {
+      "question": "Comment voir mes statistiques ?",
+      "answer": "Bonjour {{name}}, pour voir vos statistiques, allez dans **Statistiques**. Vous y trouverez : nombre de naissances et décès par mois, taux de validation, répartition par sexe, et tendances. Vous pouvez filtrer par période et exporter les données en PDF ou Excel.",
+      "role": "hospital",
+      "category": "statistiques",
+      "keywords": [
+        "statistiques",
+        "chiffres",
+        "nombre",
+        "taux",
+        "graphique",
+        "rapport",
+        "activité"
+      ],
+      "is_active": true,
+      "priority": 7,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 15,
+    "fields": {
+      "question": "Comment payer les frais d'ouverture ?",
+      "answer": "Bonjour {{name}}, pour payer les frais d'ouverture de compte, allez dans **Paiement**. Sélectionnez le mode de paiement (mobile money, carte bancaire, virement). Suivez les instructions à l'écran. Une fois le paiement confirmé, votre compte hôpital sera activé sous 24 heures.",
+      "role": "hospital",
+      "category": "paiement",
+      "keywords": [
+        "payer",
+        "paiement",
+        "frais",
+        "ouverture",
+        "argent",
+        "mobile money",
+        "activation"
+      ],
+      "is_active": true,
+      "priority": 8,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 16,
+    "fields": {
+      "question": "Quels documents sont requis pour une naissance ?",
+      "answer": "Bonjour {{name}}, pour enregistrer une naissance, les documents requis sont : pièce d'identité de la mère (ou les deux parents), acte de mariage (si applicable), et le livret de famille. Pour les naissances à domicile, un témoignage du chef de quartier ou de l'officier d'état civil peut être demandé.",
+      "role": "hospital",
+      "category": "naissance",
+      "keywords": [
+        "documents",
+        "pièces",
+        "requis",
+        "naissance",
+        "identité",
+        "livret",
+        "papier"
+      ],
+      "is_active": true,
+      "priority": 8,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 17,
+    "fields": {
+      "question": "Mon certificat est en attente depuis longtemps",
+      "answer": "Bonjour {{name}}, le délai normal de validation est de 24 à 48 heures ouvrées. Si votre certificat est en attente depuis plus longtemps : 1) Vérifiez qu'il n'y a pas d'erreur dans les informations, 2) Contactez l'autorité via la section **Signalement**, 3) Vérifiez que votre compte hôpital est actif et à jour.",
+      "role": "hospital",
+      "category": "certificat",
+      "keywords": [
+        "attente",
+        "longtemps",
+        "délai",
+        "validation",
+        "lent",
+        "urgent",
+        "problème"
+      ],
+      "is_active": true,
+      "priority": 7,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 18,
+    "fields": {
+      "question": "Comment valider un certificat ?",
+      "answer": "Bonjour {{name}}, pour valider un certificat, allez dans **Validation**. Vous voyez la liste des certificats en attente. Cliquez sur un certificat pour voir les détails, vérifiez les informations (nom, date, lieu, hôpital), puis cliquez sur **Approuver** ou **Rejeter**. En cas de rejet, indiquez la raison pour que l'hôpital puisse corriger.",
+      "role": "authority",
+      "category": "validation",
+      "keywords": [
+        "valider",
+        "approuver",
+        "certificat",
+        "validation",
+        "accepter",
+        "refuser",
+        "rejet"
+      ],
+      "is_active": true,
+      "priority": 10,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 19,
+    "fields": {
+      "question": "Comment voir les statistiques ?",
+      "answer": "Bonjour {{name}}, pour voir les statistiques globales, allez dans **Statistiques**. Vous avez accès à : nombre total de naissances et décès par région/province, taux de validation par hôpital, répartition par sexe et âge, tendances mensuelles et annuelles, et comparaisons entre hôpitaux. Les données sont mises à jour en temps réel.",
+      "role": "authority",
+      "category": "statistiques",
+      "keywords": [
+        "statistiques",
+        "chiffres",
+        "données",
+        "graphique",
+        "taux",
+        "région",
+        "province"
+      ],
+      "is_active": true,
+      "priority": 9,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 20,
+    "fields": {
+      "question": "Comment auditer un hôpital ?",
+      "answer": "Bonjour {{name}}, pour auditer un hôpital, allez dans **Audit** > **Nouvel audit**. Sélectionnez l'hôpital, définissez la période d'audit, et le système générera automatiquement un rapport avec : nombre de certificats émis, taux d'erreur, délais de validation, et anomalies détectées. Vous pouvez ajouter des notes et recommandations.",
+      "role": "authority",
+      "category": "audit",
+      "keywords": [
+        "auditer",
+        "audit",
+        "hôpital",
+        "contrôle",
+        "inspection",
+        "vérification",
+        "rapport"
+      ],
+      "is_active": true,
+      "priority": 9,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 21,
+    "fields": {
+      "question": "Comment gérer les signalements ?",
+      "answer": "Bonjour {{name}}, pour gérer les signalements, allez dans **Signalements**. Vous voyez tous les signalements reçus classés par priorité (urgent, normal, faible). Cliquez sur un signalement pour voir les détails, assignez-le à un agent si nécessaire, et mettez à jour le statut (En cours, Résolu, Archivé). Les citoyens reçoivent une notification à chaque mise à jour.",
+      "role": "authority",
+      "category": "signalement",
+      "keywords": [
+        "signalement",
+        "gérer",
+        "traiter",
+        "réclamation",
+        "plainte",
+        "assigner",
+        "résoudre"
+      ],
+      "is_active": true,
+      "priority": 8,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 22,
+    "fields": {
+      "question": "Comment activer un nouvel hôpital ?",
+      "answer": "Bonjour {{name}}, pour activer un nouvel hôpital, allez dans **Hôpitaux** > **Nouveau**. Remplissez les informations : nom, adresse, type (public/privé), capacité, directeur, et numéro de licence. Vérifiez les documents fournis, puis cliquez sur **Activer**. L'hôpital recevra un email de confirmation avec ses identifiants de connexion.",
+      "role": "authority",
+      "category": "hopitaux",
+      "keywords": [
+        "activer",
+        "nouvel hôpital",
+        "créer",
+        "ajouter",
+        "enregistrer",
+        "hôpital"
+      ],
+      "is_active": true,
+      "priority": 8,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 23,
+    "fields": {
+      "question": "Comment suspendre un hôpital ?",
+      "answer": "Bonjour {{name}}, pour suspendre un hôpital, allez dans **Hôpitaux**, trouvez l'hôpital concerné, cliquez sur **Détails** puis **Suspendre**. Indiquez la raison de la suspension (non-paiement, fraude, non-conformité). L'hôpital sera notifié et ne pourra plus soumettre de certificats jusqu'à la levée de la suspension.",
+      "role": "authority",
+      "category": "hopitaux",
+      "keywords": [
+        "suspendre",
+        "bloquer",
+        "désactiver",
+        "hôpital",
+        "sanction",
+        "interdire"
+      ],
+      "is_active": true,
+      "priority": 7,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 24,
+    "fields": {
+      "question": "Comment exporter les données ?",
+      "answer": "Bonjour {{name}}, pour exporter les données, allez dans **Statistiques** > **Exporter**. Vous pouvez exporter en : PDF (rapport officiel), Excel/CSV (données brutes), ou JSON (pour intégration). Sélectionnez la période, les filtres (région, hôpital, type), puis cliquez sur **Exporter**. Le fichier sera téléchargé automatiquement.",
+      "role": "authority",
+      "category": "statistiques",
+      "keywords": [
+        "exporter",
+        "données",
+        "pdf",
+        "excel",
+        "csv",
+        "télécharger",
+        "rapport"
+      ],
+      "is_active": true,
+      "priority": 7,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 25,
+    "fields": {
+      "question": "Quels sont les critères de validation ?",
+      "answer": "Bonjour {{name}}, les critères de validation d'un certificat sont : 1) **Identité** : nom, prénom, date de naissance cohérents, 2) **Lieu** : hôpital enregistré et actif, 3) **Documents** : pièces justificatives complètes, 4) **Délais** : déclaration dans les délais légaux (30 jours pour naissance, 24h pour décès), 5) **Unicité** : pas de doublon détecté. Vérifiez chaque point avant d'approuver.",
+      "role": "authority",
+      "category": "validation",
+      "keywords": [
+        "critères",
+        "validation",
+        "règles",
+        "normes",
+        "vérifier",
+        "contrôler",
+        "approuver"
+      ],
+      "is_active": true,
+      "priority": 8,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 26,
+    "fields": {
+      "question": "Comment me connecter ?",
+      "answer": "Bonjour {{name}}, pour vous connecter, allez sur la page **Connexion**, saisissez votre email et mot de passe, puis cliquez sur **Se connecter**. Si vous avez oublié votre mot de passe, cliquez sur **Mot de passe oublié** et suivez les instructions envoyées par email.",
+      "role": "all",
+      "category": "connexion",
+      "keywords": [
+        "connecter",
+        "login",
+        "connexion",
+        "se connecter",
+        "identifier",
+        "authentification"
+      ],
+      "is_active": true,
+      "priority": 10,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 27,
+    "fields": {
+      "question": "J'ai oublié mon mot de passe",
+      "answer": "Bonjour {{name}}, pas de panique ! Cliquez sur **Mot de passe oublié** sur la page de connexion. Saisissez votre email, et vous recevrez un lien de réinitialisation. Ce lien est valable 24 heures. Si vous ne recevez pas l'email, vérifiez votre dossier spam ou contactez le support.",
+      "role": "all",
+      "category": "connexion",
+      "keywords": [
+        "oublié",
+        "mot de passe",
+        "réinitialiser",
+        "perdu",
+        "récupérer",
+        "reset"
+      ],
+      "is_active": true,
+      "priority": 10,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 28,
+    "fields": {
+      "question": "Comment changer la langue ?",
+      "answer": "Bonjour {{name}}, pour changer la langue, allez dans **Paramètres** > **Langue**. Sélectionnez votre langue préférée parmi : Français, Lingala, Kikongo, Tshiluba, ou Swahili. L'interface se mettra à jour instantanément. Vos préférences sont sauvegardées pour vos prochaines connexions.",
+      "role": "all",
+      "category": "parametres",
+      "keywords": [
+        "langue",
+        "changer",
+        "français",
+        "lingala",
+        "kikongo",
+        "tshiluba",
+        "swahili",
+        "traduction"
+      ],
+      "is_active": true,
+      "priority": 8,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 29,
+    "fields": {
+      "question": "Comment changer le thème ?",
+      "answer": "Bonjour {{name}}, pour changer le thème, cliquez sur l'icône **Soleil/Lune** en bas de la sidebar, ou allez dans **Paramètres** > **Thème**. Vous pouvez choisir : **Clair**, **Sombre**, ou **Système** (suivant les préférences de votre appareil). Le changement est instantané.",
+      "role": "all",
+      "category": "parametres",
+      "keywords": [
+        "thème",
+        "sombre",
+        "clair",
+        "mode nuit",
+        "couleur",
+        "apparence",
+        "design"
+      ],
+      "is_active": true,
+      "priority": 6,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 30,
+    "fields": {
+      "question": "Qu'est-ce que Care-Link RDC ?",
+      "answer": "Bonjour {{name}}, **Care-Link RDC** est la plateforme officielle de gestion des certificats d'état civil en République Démocratique du Congo. Elle permet aux hôpitaux d'enregistrer les naissances et décès, aux autorités de valider les certificats, et aux citoyens de consulter et télécharger leurs documents officiels. La plateforme garantit la sécurité, la traçabilité et la conformité légale.",
+      "role": "all",
+      "category": "aide",
+      "keywords": [
+        "care-link",
+        "rdc",
+        "plateforme",
+        "c'est quoi",
+        "présentation",
+        "fonction",
+        "but"
+      ],
+      "is_active": true,
+      "priority": 5,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 31,
+    "fields": {
+      "question": "Comment me déconnecter ?",
+      "answer": "Bonjour {{name}}, pour vous déconnecter, cliquez sur le bouton **Déconnexion** en bas de la sidebar (icône de porte). Vous serez redirigé vers la page de connexion. Pour des raisons de sécurité, votre session expire automatiquement après 30 minutes d'inactivité.",
+      "role": "all",
+      "category": "connexion",
+      "keywords": [
+        "déconnecter",
+        "logout",
+        "quitter",
+        "sortir",
+        "fermer session",
+        "déconnexion"
+      ],
+      "is_active": true,
+      "priority": 6,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 32,
+    "fields": {
+      "question": "L'application est-elle sécurisée ?",
+      "answer": "Bonjour {{name}}, oui, Care-Link RDC utilise plusieurs niveaux de sécurité : **Chiffrement SSL/TLS** pour toutes les communications, **Authentification JWT** avec tokens sécurisés, **Vérification à deux facteurs** disponible, **Audit logs** pour tracer toutes les actions, et **Conformité RGPD** pour la protection des données personnelles. Vos données sont stockées sur des serveurs sécurisés en RDC.",
+      "role": "all",
+      "category": "aide",
+      "keywords": [
+        "sécurité",
+        "sécurisé",
+        "chiffrement",
+        "protection",
+        "données",
+        "confidentiel",
+        "sûr"
+      ],
+      "is_active": true,
+      "priority": 7,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 33,
+    "fields": {
+      "question": "Comment utiliser l'assistant AI ?",
+      "answer": "Bonjour {{name}}, l'assistant AI est disponible en cliquant sur l'icône **Message** en bas à droite de l'écran (widget flottant), ou via la page **Assistant** dans le menu. Vous pouvez lui poser des questions sur les fonctionnalités, les démarches, ou obtenir de l'aide. Il comprend le français, le lingala, le kikongo, le tshiluba et le swahili. Essayez de cliquer sur son avatar, il a une petite surprise ! 🤖",
+      "role": "all",
+      "category": "aide",
+      "keywords": [
+        "assistant",
+        "ai",
+        "robot",
+        "aide",
+        "comment utiliser",
+        "chatbot",
+        "bot"
+      ],
+      "is_active": true,
+      "priority": 5,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 34,
+    "fields": {
+      "question": "Quels navigateurs sont supportés ?",
+      "answer": "Bonjour {{name}}, Care-Link RDC fonctionne sur tous les navigateurs modernes : **Google Chrome** (recommandé), **Mozilla Firefox**, **Microsoft Edge**, **Safari** (Mac/iOS), et **Opera**. Pour une expérience optimale, utilisez la dernière version de votre navigateur. L'application est également responsive et fonctionne sur mobile et tablette.",
+      "role": "all",
+      "category": "aide",
+      "keywords": [
+        "navigateur",
+        "chrome",
+        "firefox",
+        "safari",
+        "edge",
+        "mobile",
+        "tablette",
+        "compatible"
+      ],
+      "is_active": true,
+      "priority": 4,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  },
+  {
+    "model": "ai_assistant.faq",
+    "pk": 35,
+    "fields": {
+      "question": "Comment signaler un bug ?",
+      "answer": "Bonjour {{name}}, pour signaler un bug, allez dans **Signalement** > **Problème technique**. Décrivez le bug en détail : ce que vous faisiez, le message d'erreur (si visible), et votre navigateur. Vous pouvez aussi joindre une capture d'écran. Notre équipe technique traitera votre signalement sous 48 heures.",
+      "role": "all",
+      "category": "aide",
+      "keywords": [
+        "bug",
+        "erreur",
+        "problème technique",
+        "signaler",
+        "dysfonctionnement",
+        "glitch"
+      ],
+      "is_active": true,
+      "priority": 6,
+      "created_at": "2026-07-18T20:14:59.648237",
+      "updated_at": "2026-07-18T20:14:59.648237"
+    }
+  }
+]

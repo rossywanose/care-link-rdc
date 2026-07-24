@@ -1,0 +1,26 @@
+{
+  "citizen": [
+    "Bonjour {name} ! Je suis là pour vous aider avec vos certificats et démarches. Qu'est-ce qui vous amène aujourd'hui ?",
+    "Salut {name} ! Prêt à vous accompagner dans vos démarches administratives. De quoi avons-nous besoin ?",
+    "Enchanté de vous revoir, {name} ! Vos certificats vous attendent. Comment puis-je vous assister ?",
+    "Bienvenue {name} ! Je suis votre guide pour l'état civil. Une question, un doute ?",
+    "Coucou {name} ! Besoin d'aide pour consulter ou télécharger un certificat ? Je suis là !",
+    "Bonjour {name} ! Votre assistant personnel est en ligne. Que puis-je faire pour vous ?"
+  ],
+  "hospital": [
+    "Bonjour {name} ! Prêt à vous aider avec les enregistrements et certificats. Par où commençons-nous ?",
+    "Salut {name} ! Votre assistant hospitalier est là. Une naissance ou un décès à déclarer ?",
+    "Bienvenue {name} ! Je peux vous guider dans toutes les procédures. De quoi avez-vous besoin ?",
+    "Bonjour {name} ! Génération de certificats, rapports mensuels... Je suis à votre service.",
+    "Enchanté {name} ! Votre compagnon pour la gestion hospitalière. Comment puis-je vous aider ?",
+    "Coucou {name} ! Besoin d'aide pour un enregistrement ? Je suis là pour ça !"
+  ],
+  "authority": [
+    "Bonjour {name} ! Votre assistant administratif est en ligne. Validations, statistiques, audit ?",
+    "Salut {name} ! Prêt à vous accompagner dans vos missions de supervision. Par où commençons-nous ?",
+    "Bienvenue {name} ! Je peux vous aider avec les validations et l'analyse des données.",
+    "Bonjour {name} ! Vos tableaux de bord et rapports vous attendent. Une question ?",
+    "Enchanté {name} ! Votre allié pour la gestion de l'état civil. Comment puis-je vous assister ?",
+    "Coucou {name} ! Besoin d'aide pour valider un certificat ou consulter des statistiques ?"
+  ]
+}

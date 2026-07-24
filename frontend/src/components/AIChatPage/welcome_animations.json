@@ -1,0 +1,237 @@
+{
+  "version": "1.0",
+  "description": "Animations de bienvenue pour Care-Link AI - Inspirées Kimi & Google Doodles",
+
+  "animations": [
+    {
+      "id": "kimi-logo-reveal",
+      "name": "Logo Révélateur (style Kimi)",
+      "type": "logo-reveal",
+      "enabled": true,
+      "duration": 4000,
+      "phases": [
+        {
+          "phase": 1,
+          "name": "Logo statique",
+          "duration": 1500,
+          "elements": [
+            {
+              "type": "icon",
+              "icon": "Bot",
+              "size": 80,
+              "animation": "float",
+              "glow": true,
+              "glowColor": "rgba(99, 102, 241, 0.3)"
+            },
+            {
+              "type": "text",
+              "content": "Care-Link",
+              "style": "title",
+              "animation": "fade-in"
+            }
+          ]
+        },
+        {
+          "phase": 2,
+          "name": "Hover / Interaction",
+          "trigger": "hover",
+          "duration": 2500,
+          "elements": [
+            {
+              "type": "icon",
+              "icon": "Bot",
+              "size": 60,
+              "animation": "shrink-and-move",
+              "position": "top-left"
+            },
+            {
+              "type": "cards",
+              "layout": "horizontal-scroll",
+              "items": [
+                { "icon": "FileText", "label": "Certificats", "color": "#3b82f6" },
+                { "icon": "Baby", "label": "Naissances", "color": "#ec4899" },
+                { "icon": "Skull", "label": "Décès", "color": "#6b7280" },
+                { "icon": "Building2", "label": "Hôpitaux", "color": "#10b981" },
+                { "icon": "BarChart3", "label": "Statistiques", "color": "#f59e0b" },
+                { "icon": "CheckCircle2", "label": "Validation", "color": "#8b5cf6" }
+              ],
+              "animation": "slide-in-stagger",
+              "staggerDelay": 150
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "google-doodle",
+      "name": "Doodle Animé (style Google)",
+      "type": "doodle",
+      "enabled": true,
+      "duration": 6000,
+      "background": {
+        "type": "gradient",
+        "colors": ["#1e1b4b", "#312e81", "#4c1d95"],
+        "animation": "shift"
+      },
+      "elements": [
+        {
+          "type": "floating-shapes",
+          "count": 15,
+          "shapes": ["circle", "square", "triangle", "cross"],
+          "colors": ["rgba(99,102,241,0.2)", "rgba(139,92,246,0.2)", "rgba(236,72,153,0.2)", "rgba(16,185,129,0.2)"],
+          "sizes": [20, 40, 60, 80],
+          "animation": "float-random",
+          "blur": true
+        },
+        {
+          "type": "central-illustration",
+          "illustration": "hospital-ecosystem",
+          "animation": "breathe",
+          "scale": [0.95, 1.05],
+          "duration": 4000
+        },
+        {
+          "type": "orbiting-icons",
+          "icons": ["Heart", "Shield", "Activity", "Users", "Globe"],
+          "orbitRadius": 120,
+          "animation": "orbit",
+          "speed": 20
+        },
+        {
+          "type": "particles",
+          "count": 30,
+          "color": "#6366f1",
+          "animation": "rise-and-fade",
+          "spawnRate": 200
+        }
+      ]
+    },
+
+    {
+      "id": "typing-hero",
+      "name": "Typing Hero (style terminal)",
+      "type": "typewriter-hero",
+      "enabled": true,
+      "duration": 5000,
+      "elements": [
+        {
+          "type": "terminal-window",
+          "style": "glassmorphism",
+          "borderRadius": 16,
+          "animation": "scale-in"
+        },
+        {
+          "type": "typing-text",
+          "lines": [
+            { "text": "Bonjour {name}", "color": "#10b981", "speed": 80 },
+            { "text": "Je suis Care-Link AI", "color": "#6366f1", "speed": 60 },
+            { "text": "Votre assistant pour l'état civil", "color": "#ec4899", "speed": 50 },
+            { "text": "Prêt à vous aider...", "color": "#f59e0b", "speed": 70, "blink": true }
+          ],
+          "cursor": {
+            "style": "block",
+            "color": "#6366f1",
+            "blink": true,
+            "blinkSpeed": 530
+          }
+        },
+        {
+          "type": "progress-bar",
+          "style": "gradient",
+          "colors": ["#6366f1", "#8b5cf6", "#ec4899"],
+          "animation": "fill"
+        }
+      ]
+    },
+
+    {
+      "id": "morphing-shapes",
+      "name": "Morphing Géométrique",
+      "type": "morph",
+      "enabled": true,
+      "duration": 4500,
+      "elements": [
+        {
+          "type": "morphing-logo",
+          "shapes": [
+            { "type": "circle", "duration": 1000 },
+            { "type": "square", "duration": 1000 },
+            { "type": "hexagon", "duration": 1000 },
+            { "type": "cross", "duration": 1000 }
+          ],
+          "color": "#6366f1",
+          "animation": "morph",
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "text-reveal",
+          "text": "Care-Link",
+          "animation": "letter-by-letter",
+          "delay": 50,
+          "color": "#ffffff"
+        }
+      ]
+    },
+
+    {
+      "id": "data-flow",
+      "name": "Flux de Données",
+      "type": "data-visualization",
+      "enabled": true,
+      "duration": 5000,
+      "elements": [
+        {
+          "type": "nodes",
+          "count": 5,
+          "labels": ["Citoyen", "Hôpital", "Autorité", "Certificat", "Validation"],
+          "positions": [
+            { "x": 20, "y": 50 },
+            { "x": 40, "y": 30 },
+            { "x": 60, "y": 50 },
+            { "x": 40, "y": 70 },
+            { "x": 80, "y": 50 }
+          ],
+          "animation": "pulse",
+          "colors": ["#3b82f6", "#ec4899", "#8b5cf6", "#10b981", "#f59e0b"]
+        },
+        {
+          "type": "connections",
+          "animation": "draw-line",
+          "duration": 2000,
+          "style": "gradient",
+          "dashArray": "5,5"
+        },
+        {
+          "type": "data-packets",
+          "animation": "flow-along-path",
+          "speed": 2,
+          "color": "#ffffff",
+          "size": 6
+        }
+      ]
+    }
+  ],
+
+  "settings": {
+    "defaultAnimation": "kimi-logo-reveal",
+    "randomize": false,
+    "allowSkip": true,
+    "skipDelay": 2000,
+    "repeatOnNewConversation": false,
+    "transitionDuration": 800
+  },
+
+  "interactions": {
+    "hover": {
+      "enabled": true,
+      "trigger": "mouseenter",
+      "animation": "expand"
+    },
+    "click": {
+      "enabled": true,
+      "trigger": "click",
+      "animation": "ripple"
+    }
+  }
+}
