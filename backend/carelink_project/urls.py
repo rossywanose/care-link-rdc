@@ -3,9 +3,10 @@ Care-Link RDC URL Configuration
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -15,7 +16,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenVerifyView,
 )
-from users.views import LoginView  # ← AJOUTEZ CECI
+from users.views import LoginView
 from verify.views import verify_certificate
 
 urlpatterns = [
@@ -30,7 +31,7 @@ urlpatterns = [
     ),
     path("api/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
     # JWT Authentication
-    path("api/v1/auth/login/", LoginView.as_view(), name="login"),  # ← MODIFIÉ
+    path("api/v1/auth/login/", LoginView.as_view(), name="login"),
     path("api/v1/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/v1/auth/verify/", TokenVerifyView.as_view(), name="token_verify"),
     # API Endpoints
@@ -50,7 +51,12 @@ urlpatterns = [
     ),
 ]
 
-# Serve media and static files in development
+# Serve media files in development
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# Catch-all: si l'URL ne correspond à rien ci-dessus, renvoie index.html (React)
+# Cela permet à React Router de gérer les routes côté client
+urlpatterns += [
+    re_path(r"^.*$", TemplateView.as_view(template_name="index.html")),
+]

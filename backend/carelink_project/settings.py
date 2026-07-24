@@ -5,11 +5,13 @@ Generated with best practices for production-ready Django applications.
 """
 
 import os
+import dj_database_url
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 
 load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,9 +21,10 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+# Railway peut avoir n'importe quel domaine → on accepte tout en prod
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
 # Application definition
 DJANGO_APPS = [
@@ -88,30 +91,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "carelink_project.wsgi.application"
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+# =============================================================================
+# DATABASE
+# =============================================================================
+# Railway fournit DATABASE_URL automatiquement (PostgreSQL)
+# En local, on retombe sur SQLite si DATABASE_URL n'existe pas
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": dj_database_url.config(
+        default="sqlite:///" + str(BASE_DIR / "db.sqlite3"),
+        conn_max_age=600,
+        ssl_require=False,
+    )
 }
 
-# Production database (PostgreSQL)
-# Uncomment and configure for production
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ.get('DB_NAME', 'carelink'),
-#         'USER': os.environ.get('DB_USER', 'carelink'),
-#         'PASSWORD': os.environ.get('DB_PASSWORD', ''),
-#         'HOST': os.environ.get('DB_HOST', 'localhost'),
-#         'PORT': os.environ.get('DB_PORT', '5432'),
-#     }
-# }
-
-# Password validation
+# =============================================================================
+# PASSWORD VALIDATION
+# =============================================================================
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -130,30 +125,47 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
+# =============================================================================
+# INTERNATIONALIZATION
+# =============================================================================
 LANGUAGE_CODE = "fr-fr"
 TIME_ZONE = "Africa/Kinshasa"
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# =============================================================================
+# STATIC & MEDIA FILES
+# =============================================================================
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-# Media files
+# WhiteNoise pour servir les fichiers statiques en production
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-# Default primary key field type
+# Créer les dossiers s'ils n'existent pas (évite les erreurs au démarrage)
+os.makedirs(BASE_DIR / "static", exist_ok=True)
+os.makedirs(BASE_DIR / "templates", exist_ok=True)
+os.makedirs(BASE_DIR / "media", exist_ok=True)
+
+# =============================================================================
+# DEFAULT PRIMARY KEY
+# =============================================================================
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Custom User Model
+# =============================================================================
+# CUSTOM USER MODEL
+# =============================================================================
 AUTH_USER_MODEL = "users.User"
 
-# Django REST Framework
+# =============================================================================
+# DJANGO REST FRAMEWORK
+# =============================================================================
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
@@ -174,7 +186,9 @@ REST_FRAMEWORK = {
     ],
 }
 
-# JWT Configuration
+# =============================================================================
+# JWT CONFIGURATION
+# =============================================================================
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(
         minutes=int(os.environ.get("JWT_ACCESS_TOKEN_LIFETIME", "60"))
@@ -200,19 +214,23 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 }
 
-# CORS Configuration
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+# =============================================================================
+# CORS CONFIGURATION
+# =============================================================================
+# En production, on autorise tout pour simplifier le déploiement initial
+# (tu pourras restreindre plus tard avec CORS_ALLOWED_ORIGINS)
+CORS_ALLOW_ALL_ORIGINS = (
+    os.environ.get("CORS_ALLOW_ALL_ORIGINS", "True").lower() == "true"
+)
 
 CORS_ALLOW_CREDENTIALS = True
 
-# Add production origins from environment
-if os.environ.get("CORS_ALLOWED_ORIGINS"):
-    CORS_ALLOWED_ORIGINS.extend(os.environ.get("CORS_ALLOWED_ORIGINS").split(","))
+# Si tu veux restreindre plus tard, utilise cette variable d'environnement :
+# CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS", "").split(",")
 
-# Spectacular (API Documentation)
+# =============================================================================
+# SPECTACULAR (API Documentation)
+# =============================================================================
 SPECTACULAR_SETTINGS = {
     "TITLE": "Care-Link RDC API",
     "DESCRIPTION": "API pour la gestion des certificats de naissance et de décès en RDC",
@@ -220,11 +238,15 @@ SPECTACULAR_SETTINGS = {
     "SERVE_INCLUDE_SCHEMA": False,
 }
 
-# Stripe Configuration
+# =============================================================================
+# STRIPE CONFIGURATION
+# =============================================================================
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
 STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY", "")
 
-# Email Configuration
+# =============================================================================
+# EMAIL CONFIGURATION
+# =============================================================================
 EMAIL_BACKEND = os.environ.get(
     "EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend"
 )
@@ -235,7 +257,9 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "noreply@carelink-rdc.com")
 
-# Celery Configuration (for async tasks)
+# =============================================================================
+# CELERY CONFIGURATION
+# =============================================================================
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "redis://localhost:6379/0")
 CELERY_RESULT_BACKEND = os.environ.get(
     "CELERY_RESULT_BACKEND", "redis://localhost:6379/0"
@@ -245,7 +269,9 @@ CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = TIME_ZONE
 
-# Security Headers (Production)
+# =============================================================================
+# SECURITY HEADERS (Production)
+# =============================================================================
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
@@ -258,7 +284,11 @@ if not DEBUG:
     X_FRAME_OPTIONS = "DENY"
     SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 
-# Logging
+# =============================================================================
+# LOGGING
+# =============================================================================
+# En production, on évite d'écrire dans des fichiers (Railway = filesystem éphémère)
+# On logue uniquement dans la console
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -277,11 +307,6 @@ LOGGING = {
             "class": "logging.StreamHandler",
             "formatter": "simple",
         },
-        "file": {
-            "class": "logging.FileHandler",
-            "filename": BASE_DIR / "logs" / "django.log",
-            "formatter": "verbose",
-        },
     },
     "root": {
         "handlers": ["console"],
@@ -289,18 +314,19 @@ LOGGING = {
     },
     "loggers": {
         "django": {
-            "handlers": ["console", "file"],
+            "handlers": ["console"],
             "level": "INFO",
             "propagate": False,
         },
         "carelink": {
-            "handlers": ["console", "file"],
-            "level": "DEBUG",
+            "handlers": ["console"],
+            "level": "DEBUG" if DEBUG else "INFO",
             "propagate": False,
         },
     },
 }
 
-# Create logs directory if it doesn't exist
-os.makedirs(BASE_DIR / "logs", exist_ok=True)
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+# =============================================================================
+# GROQ API KEY
+# =============================================================================
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")

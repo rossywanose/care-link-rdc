@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AFYA-APP-RDC - Plateforme de registre sanitaire pour la ville de Kinshasa">
+    <meta name="theme-color" content="#0ea5e9">
+    <title>AFYA-APP-RDC | Chargement...</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset et base - SANS overflow:hidden sur body */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            /* overflow: hidden; SUPPRIMÉ - causait le bug de défilement */
+        }
+
+        /* Conteneur principal du splash screen - SEUL élément avec overflow hidden */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+            overflow: hidden; /* Uniquement ici pour les particules */
+        }
+
+        #splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none; /* Empêche les clics quand caché */
+        }
+
+        /* Cercle animé autour du logo */
+        .loader-circle {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin-bottom: 40px;
+        }
+
+        .loader-circle::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #0ea5e9;
+            border-right-color: #0ea5e9;
+            animation: spin 2s linear infinite;
+        }
+
+        .loader-circle::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-bottom-color: #22d3ee;
+            border-left-color: #22d3ee;
+            animation: spin-reverse 3s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes spin-reverse {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* Conteneur du logo */
+        .logo-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 
+                0 0 30px rgba(14, 165, 233, 0.3),
+                0 0 60px rgba(14, 165, 233, 0.2),
+                inset 0 0 20px rgba(14, 165, 233, 0.1);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow: 
+                    0 0 30px rgba(14, 165, 233, 0.3),
+                    0 0 60px rgba(14, 165, 233, 0.2),
+                    inset 0 0 20px rgba(14, 165, 233, 0.1);
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.05);
+                box-shadow: 
+                    0 0 40px rgba(14, 165, 233, 0.5),
+                    0 0 80px rgba(14, 165, 233, 0.3),
+                    inset 0 0 30px rgba(14, 165, 233, 0.2);
+            }
+        }
+
+        /* Logo image */
+        .logo-container img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            animation: fade-in-logo 1s ease-out;
+        }
+
+        @keyframes fade-in-logo {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Titre de l'application */
+        .app-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0ea5e9 0%, #22d3ee 50%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            animation: slide-up 0.8s ease-out;
+        }
+
+        @keyframes slide-up {
+            0% { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Sous-titre */
+        .app-subtitle {
+            font-size: 1rem;
+            color: #94a3b8;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            animation: slide-up 0.8s ease-out 0.2s both;
+        }
+
+        /* Barre de progression */
+        .progress-container {
+            width: 300px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            animation: slide-up 0.8s ease-out 0.4s both;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #0ea5e9, #22d3ee, #0ea5e9);
+            background-size: 200% 100%;
+            width: 0%;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Informations de chargement */
+        .loading-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: slide-up 0.8s ease-out 0.6s both;
+        }
+
+        /* Pourcentage */
+        .loading-percentage {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0ea5e9;
+            text-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+        }
+
+        /* Texte de chargement */
+        .loading-text {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .loading-text::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+            100% { content: ''; }
+        }
+
+        /* Compteur de temps */
+        .time-counter {
+            font-size: 0.8rem;
+            color: #475569;
+            margin-top: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Particules d'arrière-plan */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(14, 165, 233, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Conteneur de l'application React (initialement caché) */
+        #root {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+            min-height: 100vh; /* Permet le défilement si contenu long */
+        }
+
+        #root.visible {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .app-title {
+                font-size: 1.8rem;
+            }
+            .app-subtitle {
+                font-size: 0.8rem;
+            }
+            .loader-circle {
+                width: 150px;
+                height: 150px;
+            }
+            .logo-container {
+                width: 110px;
+                height: 110px;
+            }
+            .logo-container img {
+                width: 80px;
+                height: 80px;
+            }
+            .progress-container {
+                width: 250px;
+            }
+            .loading-percentage {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- Écran de chargement / Splash Screen -->
+    <div id="splash-screen">
+        <!-- Particules animées en arrière-plan -->
+        <div class="particles" id="particles"></div>
+
+        <!-- Cercle loader avec logo -->
+        <div class="loader-circle">
+            <div class="logo-container">
+                <img src="Images/logo.png">
+            </div>
+        </div>
+
+        <!-- Titre et sous-titre -->
+        <h1 class="app-title">AFYA-APP</h1>
+        <p class="app-subtitle">Registre Sanitaire de Kinshasa</p>
+
+        <!-- Barre de progression -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <!-- Informations de chargement -->
+        <div class="loading-info">
+            <div class="loading-percentage" id="percentage">0%</div>
+            <p class="loading-text">Chargement en cours</p>
+            <div class="time-counter" id="time-counter">Temps écoulé: 0.0s / 10.0s</div>
+        </div>
+    </div>
+
+    <!-- Conteneur React -->
+    <div id="root"></div>
+
+    <script>
+        // Générer les particules
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                container.appendChild(particle);
+            }
+        }
+
+        // Simulation de progression avec compteur de temps
+        function simulateLoading() {
+            const progressBar = document.getElementById('progress-bar');
+            const percentageText = document.getElementById('percentage');
+            const timeCounter = document.getElementById('time-counter');
+            const splashScreen = document.getElementById('splash-screen');
+            const root = document.getElementById('root');
+
+            const totalDuration = 10000; // 10 secondes
+            const interval = 50; // Mise à jour tous les 50ms
+            let elapsedTime = 0;
+            let progress = 0;
+
+            const loadingInterval = setInterval(() => {
+                elapsedTime += interval;
+
+                // Calculer la progression basée sur le temps écoulé
+                progress = (elapsedTime / totalDuration) * 100;
+
+                // Ajouter une légère variation aléatoire pour plus de réalisme
+                const variation = (Math.random() - 0.5) * 2;
+                const displayProgress = Math.min(100, Math.max(0, progress + variation));
+
+                // Mettre à jour la barre et le pourcentage
+                progressBar.style.width = displayProgress + '%';
+                percentageText.textContent = Math.floor(displayProgress) + '%';
+
+                // Mettre à jour le compteur de temps
+                const seconds = (elapsedTime / 1000).toFixed(1);
+                timeCounter.textContent = `Temps écoulé: ${seconds}s / 10.0s`;
+
+                // Vérifier si le chargement est terminé
+                if (elapsedTime >= totalDuration) {
+                    clearInterval(loadingInterval);
+                    progressBar.style.width = '100%';
+                    percentageText.textContent = '100%';
+                    timeCounter.textContent = 'Temps écoulé: 10.0s / 10.0s';
+
+                    // Courte pause à 100% avant de masquer
+                    setTimeout(() => {
+                        splashScreen.classList.add('hidden');
+                        root.classList.add('visible');
+
+                        // Supprimer complètement le splash screen après la transition
+                        setTimeout(() => {
+                            splashScreen.style.display = 'none';
+                        }, 800);
+                    }, 500);
+                }
+            }, interval);
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            simulateLoading();
+        });
+    </script>
+</body>
+</html>
