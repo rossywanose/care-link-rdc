@@ -1,7 +1,6 @@
 # ============================================
-# Groq Client
+# Groq Client - Version robuste pour Render
 # ============================================
-
 
 import os
 from groq import Groq
@@ -11,24 +10,27 @@ class GroqClient:
     """Client Groq pour l'assistant AI"""
 
     def __init__(self):
-        self.client = Groq(
-            api_key=os.environ.get("GROQ_API_KEY"),
-        )
-        # Modèle par défaut - rapide et efficace
+        api_key = os.environ.get("GROQ_API_KEY")
+        if not api_key:
+            self.client = None
+            print("⚠️ GROQ_API_KEY non définie - l'IA sera désactivée")
+        else:
+            self.client = Groq(api_key=api_key)
+
         self.model = "llama-3.3-70b-versatile"
 
+    def is_ready(self):
+        """Vérifie si le client est configuré"""
+        return self.client is not None
+
     def chat(self, messages, temperature=0.7, max_tokens=2048):
-        """
-        Envoyer une conversation à Groq
+        if not self.is_ready():
+            return {
+                "content": "Le service IA n'est pas configuré. Veuillez définir GROQ_API_KEY.",
+                "error": "GROQ_API_KEY manquante",
+                "success": False,
+            }
 
-        Args:
-            messages: Liste de dicts {role, content}
-            temperature: Créativité (0-2)
-            max_tokens: Longueur max de réponse
-
-        Returns:
-            dict: {content, tokens_used, model}
-        """
         try:
             response = self.client.chat.completions.create(
                 model=self.model,
@@ -47,7 +49,10 @@ class GroqClient:
             return {"content": "", "error": str(e), "success": False}
 
     def chat_with_streaming(self, messages, temperature=0.7, max_tokens=2048):
-        """Version streaming pour le frontend"""
+        if not self.is_ready():
+            yield "Le service IA n'est pas configuré. Veuillez définir GROQ_API_KEY."
+            return
+
         try:
             stream = self.client.chat.completions.create(
                 model=self.model,
@@ -65,5 +70,12 @@ class GroqClient:
             yield f"[ERREUR: {str(e)}]"
 
 
-# Instance singleton
-groq_client = GroqClient()
+# Instance singleton - initialisée paresseusement au premier appel
+_groq_instance = None
+
+
+def get_groq_client():
+    global _groq_instance
+    if _groq_instance is None:
+        _groq_instance = GroqClient()
+    return _groq_instance
