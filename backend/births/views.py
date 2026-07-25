@@ -32,7 +32,13 @@ class BirthListView(generics.ListAPIView):
     filterset_fields = ["status", "gender", "hospital", "date_of_birth"]
 
     def get_queryset(self):
+        if getattr(self, "swagger_fake_view", False):
+            return BirthCertificate.objects.none()
+
         user = self.request.user
+        if not user.is_authenticated:
+            return BirthCertificate.objects.none()
+
         if user.is_authority or user.is_admin:
             return BirthCertificate.objects.all()
         elif user.is_hospital:

@@ -59,6 +59,8 @@ class HospitalUpdateView(generics.UpdateAPIView):
     lookup_field = "pk"
 
     def get_permissions(self):
+        if not self.request.user.is_authenticated:
+            return [permissions.IsAuthenticated()]
         if self.request.user.role == "hospital" and self.request.user.hospital:
             return [permissions.IsAuthenticated()]
         return [IsAuthorityOrAdmin()]

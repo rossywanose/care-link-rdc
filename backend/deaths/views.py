@@ -32,7 +32,13 @@ class DeathListView(generics.ListAPIView):
     filterset_fields = ["status", "gender", "hospital", "date_of_death"]
 
     def get_queryset(self):
+        if getattr(self, "swagger_fake_view", False):
+            return DeathCertificate.objects.none()
+
         user = self.request.user
+        if not user.is_authenticated:
+            return DeathCertificate.objects.none()
+
         if user.is_authority or user.is_admin:
             return DeathCertificate.objects.all()
         elif user.is_hospital:
