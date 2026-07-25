@@ -79,3 +79,7 @@ def get_groq_client():
     if _groq_instance is None:
         _groq_instance = GroqClient()
     return _groq_instance
+
+
+# ✅ COMPATIBILITÉ : views.py peut toujours importer groq_client
+groq_client = get_groq_client()
